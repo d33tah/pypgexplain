@@ -35,7 +35,7 @@ def to_dot(s, f):
     j = json.loads(s)
     if len(j) != 1 and j.keys() != 'Plan':
         raise ValueError("Doesn't look like a JSON plan.")
-    f.write("digraph {")
+    f.write('digraph { rankdir="LR";')
     n = to_dot_node(j[0]['Plan'], f)
     f.write("}")
 
