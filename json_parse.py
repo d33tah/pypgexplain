@@ -25,7 +25,7 @@ def to_dot_node(n, f):
     for child in children:
         displayed = True
         s2 = child[0].replace('"', '\\"')
-        f.write('"%s" -- "%s";\n' % (s1, s2))
+        f.write('"%s" -> "%s";\n' % (s2, s1))
     if not displayed:
         f.write('"%s";\n' % s1)
     return s, children
