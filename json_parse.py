@@ -20,10 +20,14 @@ def to_dot_node(n, f):
             continue
         s += ("%s: %s\\n" % (k, v))
     children = [to_dot_node(c, f) for c in n.get('Plans', [])]
+    displayed = False
+    s1 = s.replace('"', '\\"')
     for child in children:
-        s1 = s.replace('"', '\\"')
+        displayed = True
         s2 = child[0].replace('"', '\\"')
         f.write('"%s" -- "%s";\n' % (s1, s2))
+    if not displayed:
+        f.write('"%s";\n' % s1)
     return s, children
 
 def to_dot(s, f):
